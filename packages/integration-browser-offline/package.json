@@ -1,14 +1,11 @@
 {
-  "name": "@sentry/integrations",
-  "version": "6.2.1",
-  "description": "Pluggable integrations that can be used to enhance JS SDKs",
+  "name": "@sentry/integration-browser-offline",
+  "version": "7.0.0-alpha.0",
+  "description": "TODO: Write proper description",
   "repository": "git://github.com/getsentry/sentry-javascript.git",
-  "homepage": "https://github.com/getsentry/sentry-javascript/tree/master/packages/integrations",
+  "homepage": "https://github.com/getsentry/sentry-javascript/tree/master/packages/integration-browser-offline",
   "author": "Sentry",
   "license": "BSD-3-Clause",
-  "engines": {
-    "node": ">=6"
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -16,28 +13,18 @@
   "module": "esm/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@sentry/minimal": "6.2.1",
-    "@sentry/scope": "7.0.0-alpha.0",
     "@sentry/types": "6.2.1",
-    "@sentry/utils": "6.2.1"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "rollup": "^1.10.1",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-terser": "^4.0.4",
-    "rollup-plugin-typescript2": "^0.21.0"
+    "@sentry/utils": "6.2.1",
+    "localforage": "^1.9.0"
   },
   "scripts": {
-    "build": "run-p build:es5 build:esm build:bundle",
+    "build": "run-p build:es5 build:esm",
     "build:es5": "tsc -p tsconfig.build.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:watch": "run-p build:watch:es5 build:watch:esm",
     "build:watch:es5": "tsc -p tsconfig.build.json -w --preserveWatchOutput",
     "build:watch:esm": "tsc -p tsconfig.esm.json -w --preserveWatchOutput",
-    "build:bundle": "rollup --config",
-    "clean": "rimraf dist coverage esm build .rpt2_cache",
+    "clean": "rimraf dist coverage",
     "link:yarn": "yarn link",
     "lint": "run-s lint:prettier lint:eslint",
     "lint:prettier": "prettier --check \"{src,test}/**/*.ts\"",
